@@ -1,0 +1,25 @@
+<div class="reset-box">
+    <img src="./assets/img/logo.png" class="avatar" alt="Avatar Image">
+    <h1>Reset here</h1>
+    <form [formGroup]="reset" (ngSubmit)="resetpassword()">
+      <!-- USERNAME INPUT -->
+      <label for="email">Email</label>
+      <input type="text" placeholder="Enter email" formControlName="email"
+      [ngClass]="{'is-invalid':reset.get('email').touched && reset.get('email').invalid}">
+      <div *ngIf="reset.get('email').touched && reset.get('email').invalid">
+        <div class="color"  *ngIf="reset.get('email').errors.required">email required</div>
+        <div class="color" *ngIf="reset.get('email').errors.email">plz enter valid email</div>
+      </div><br>
+      <!-- PASSWORD INPUT -->
+      <label for="password">Password</label>
+      <input type="password" placeholder="Enter Password" formControlName="password"
+      [ngClass]="{'is-invalid':reset.get('password').touched && reset.get('password').invalid}">
+      <div *ngIf="reset.get('password').touched && reset.get('password').invalid">
+        <div  class="color" *ngIf="reset.get('password').errors.required">password required</div>
+        <div class="color" *ngIf="reset.get('password').errors.minlength">minimun length four</div>
+      </div><br>
+      <input type="submit" value="Submit">
+      
+    </form>
+  </div>
+

@@ -1,0 +1,25 @@
+<div class="login-box">
+    <img src="./assets/img/logo.png" class="avatar" alt="Avatar Image">
+    <h1>Login Here</h1>
+    <form [formGroup]="login" (ngSubmit)="logdata()">
+      <!-- USERNAME INPUT -->
+      <label for="email">Email</label>
+      <input type="text" placeholder="Enter email" formControlName="email"
+      [ngClass]="{'is-invalid':login.get('email').touched && login.get('email').invalid}">
+      <div *ngIf="login.get('email').touched && login.get('email').invalid">
+        <div class="color" *ngIf="login.get('email').errors.required">email required</div>
+        <div class="color" *ngIf="login.get('email').errors.email">plz enter valid email</div>
+      </div><br>
+      <!-- PASSWORD INPUT -->
+      <label for="password">Password</label>
+      <input type="password" placeholder="Enter Password" formControlName="password"
+      [ngClass]="{'is-invalid':login.get('password').touched && login.get('password').invalid}">
+      <div *ngIf="login.get('password').touched && login.get('password').invalid">
+        <div class="color" *ngIf="login.get('password').errors.required">password required</div>
+        <div  class="color" *ngIf="login.get('password').errors.minlength">minimun length four</div>
+      </div><br>
+      <input type="submit" value="Log In">
+      <a href="/reset">Lost your Password?</a><br>
+      <a href="/signup">Don't have An account?</a>
+    </form>
+  </div>
